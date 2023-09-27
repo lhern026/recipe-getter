@@ -1,8 +1,8 @@
 async function getData() {
-  const mykey = process.env.API_KEY;
+  // const mykey = process.env.API_KEY;
 
   const res = await fetch(
-    `https://api.spoonacular.com/recipes/716429/information?apiKey=${mykey}`
+    "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"
   );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
@@ -17,11 +17,13 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData();
-  console.log(data);
+  console.log("hello");
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        <h1 className="object-contain">{JSON.stringify(data)}</h1>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 ">
+      <div className="w-full border border-white">
+        <h1 className="border border-black">{JSON.stringify(data)}</h1>
+        <h1></h1>
       </div>
     </main>
   );
