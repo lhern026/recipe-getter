@@ -1,3 +1,5 @@
+import { UserButton } from "@clerk/nextjs";
+
 async function getData() {
   // const mykey = process.env.API_KEY;
 
@@ -17,13 +19,14 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData();
-  console.log("hello");
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 ">
-      <div className="w-full border border-white">
+    <main>
+      <div className="">
+        <UserButton afterSignOutUrl="/" />
         <h1 className="border border-black">{JSON.stringify(data)}</h1>
-        <h1></h1>
+        <UserButton afterSignOutUrl="/" />
+        <UserButton afterSignOutUrl="/" />
       </div>
     </main>
   );
