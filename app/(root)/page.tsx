@@ -1,8 +1,12 @@
-import { UserButton } from "@clerk/nextjs";
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 async function getData() {
-  // const mykey = process.env.API_KEY;
-
   const res = await fetch(
     "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"
   );
@@ -21,13 +25,17 @@ export default async function Home() {
   const data = await getData();
 
   return (
-    <main>
-      <div className="">
+    <>
+      <h1>hello</h1>s s s s s <div>s</div>
+      <div>d</div>
+      <SignedIn>
+        {/* Mount the UserButton component */}
         <UserButton afterSignOutUrl="/" />
-        <h1 className="border border-black">{JSON.stringify(data)}</h1>
-        <UserButton afterSignOutUrl="/" />
-        <UserButton afterSignOutUrl="/" />
-      </div>
-    </main>
+      </SignedIn>
+      <SignedOut>
+        {/* Signed out users get sign in button */}
+        <SignInButton />
+      </SignedOut>
+    </>
   );
 }
